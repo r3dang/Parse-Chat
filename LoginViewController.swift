@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     @IBAction func signUpAction(_ sender: Any) {
         let newUser = PFUser()
         // set user properties
-        newUser.username = passwordField.text
+        newUser.username = emailField.text
         newUser.password = passwordField.text
         
         // call sign up function on the object
@@ -37,6 +37,7 @@ class LoginViewController: UIViewController {
             if let error = error {
                 print(error.localizedDescription)
             } else {
+                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
                 print("User Registered successfully")
             }
         }

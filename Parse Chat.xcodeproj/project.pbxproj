@@ -47,7 +47,6 @@
 		540DE9871E6149F300FF7DB4 = {
 			isa = PBXGroup;
 			children = (
-				540DE9A51E614FF200FF7DB4 /* View Controllers */,
 				540DE9921E6149F400FF7DB4 /* Parse Chat */,
 				540DE9911E6149F400FF7DB4 /* Products */,
 				6BD3FA7E51E6DBE27E66DB6A /* Pods */,
@@ -66,6 +65,7 @@
 		540DE9921E6149F400FF7DB4 /* Parse Chat */ = {
 			isa = PBXGroup;
 			children = (
+				540DE9A51E614FF200FF7DB4 /* View Controllers */,
 				540DE9931E6149F400FF7DB4 /* AppDelegate.swift */,
 				540DE9971E6149F400FF7DB4 /* Main.storyboard */,
 				540DE99A1E6149F400FF7DB4 /* Assets.xcassets */,
@@ -83,6 +83,7 @@
 				540DE9AA1E61514100FF7DB4 /* ChatViewController.swift */,
 			);
 			name = "View Controllers";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		6BD3FA7E51E6DBE27E66DB6A /* Pods */ = {
