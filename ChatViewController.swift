@@ -11,6 +11,8 @@ import Parse
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet weak var chatField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,20 @@ class ChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func sendMesage(_ sender: Any) {
+        var message = PFObject(className:"Message")
+        message["text"] = chatField.text
+        //message["user"] = PFUser.current()
+        message.saveInBackground {
+            (success: Bool, error: Error?) -> Void in
+            if (success) {
+                print("object was saved")
+            } else {
+                // There was a problem, check error.description
+                print(error?.localizedDescription)
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

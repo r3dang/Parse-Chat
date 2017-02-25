@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gYh-4X-Cgk">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,12 +55,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I8r-IR-ZNV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEw-PQ-wsz">
                                 <rect key="frame" x="268" y="403" width="42" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zkv-5g-8ly"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parse" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edm-xr-jo6">
                                 <rect key="frame" x="129" y="485" width="116" height="53"/>
@@ -73,15 +80,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="RCm-BI-2bP"/>
                     <connections>
-                        <outlet property="loginButton" destination="kEw-PQ-wsz" id="lfB-IX-wzW"/>
-                        <outlet property="signUpButton" destination="Kh8-T1-5t5" id="z8g-pd-dg4"/>
+                        <outlet property="emailField" destination="MTG-uc-o1E" id="zwc-rM-Mjx"/>
+                        <outlet property="passwordField" destination="pg4-C7-5XD" id="CCK-9k-FKP"/>
+                        <segue destination="tsH-Z3-9NX" kind="presentation" identifier="LoginSegue" id="sAA-vr-HWP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="139"/>
+            <point key="canvasLocation" x="1263" y="139"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Chat-->
         <scene sceneID="6QS-2i-3De">
             <objects>
                 <viewController id="AXE-G8-sCd" customClass="ChatViewController" customModule="Parse_Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,30 +100,82 @@
                     <view key="view" contentMode="scaleToFill" id="yne-t0-0jF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-ri-MaG">
+                                <rect key="frame" x="16" y="84" width="274" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="274" id="9g1-tN-kQX"/>
+                                    <constraint firstAttribute="height" constant="30" id="ppq-UJ-UDH"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HLg-uL-lFD">
+                                <rect key="frame" x="16" y="101" width="343" height="530"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5IW-53-qw3">
+                                    <rect key="frame" x="0.0" y="72" width="343" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ra8-Ne-5rt" customClass="ChatCell" customModule="Parse_Chat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ra8-Ne-5rt" id="I3W-Nw-Rtt">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32p-mz-ZAp">
+                                <rect key="frame" x="298" y="101" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendMesage:" destination="AXE-G8-sCd" eventType="touchUpInside" id="3cH-t1-kpS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vmc-ri-MaG" firstAttribute="top" secondItem="7TB-4Q-DGi" secondAttribute="bottom" constant="20" id="Cez-Nk-gJ1"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="vmc-ri-MaG" secondAttribute="leading" id="FQo-av-Ypn"/>
+                            <constraint firstItem="32p-mz-ZAp" firstAttribute="centerY" secondItem="vmc-ri-MaG" secondAttribute="centerY" constant="-1" id="m3V-dG-3DB"/>
+                            <constraint firstItem="32p-mz-ZAp" firstAttribute="leading" secondItem="vmc-ri-MaG" secondAttribute="trailing" constant="-1" id="ojF-uP-wGg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Chat" id="f2g-A9-8nh"/>
+                    <connections>
+                        <outlet property="chatField" destination="vmc-ri-MaG" id="QFK-pY-xbV"/>
+                        <outlet property="tableView" destination="HLg-uL-lFD" id="hVm-fU-PAG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JA4-Xn-f2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1623" y="139"/>
+            <point key="canvasLocation" x="3588" y="-412"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="sGj-PJ-iq5">
+        <scene sceneID="5ft-hW-XmG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gYh-4X-Cgk" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tsH-Z3-9NX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VuW-G4-c1i">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xUm-CW-yog">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1dK-oU-mBR"/>
+                        <segue destination="AXE-G8-sCd" kind="relationship" relationship="rootViewController" id="tOy-5g-8pF"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qyg-db-ZB9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLU-Bd-dYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1924" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
